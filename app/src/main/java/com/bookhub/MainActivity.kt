@@ -19,6 +19,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var toolbar: Toolbar
     lateinit var frameLayout: FrameLayout
     lateinit var navigationView:NavigationView
+    var previousMenuItem : MenuItem? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,7 +32,9 @@ class MainActivity : AppCompatActivity() {
         frameLayout = findViewById(R.id.frameLayout)
         navigationView = findViewById(R.id.navigationView)
 
+
         setUpToolbar()
+        openDashboard()
 
         val actionBarDrawerToggle = ActionBarDrawerToggle(this,drawerLayout ,R.string.open_drawer,R.string.close_drawer)
         drawerLayout.addDrawerListener(actionBarDrawerToggle)
@@ -39,20 +42,38 @@ class MainActivity : AppCompatActivity() {
 
         navigationView.setNavigationItemSelectedListener {
 
+            if(previousMenuItem != null)
+            {
+                 previousMenuItem?.isChecked = false
+            }
+
+            it.isCheckable = true
+            it.isChecked =true
+            previousMenuItem =it
+
+
             when(it.itemId)
             {
                 R.id.dashboard->{
-                    Toast.makeText(this,"Dashboard selected",Toast.LENGTH_LONG).show()
+                    openDashboard()
                 }
+
                 R.id.favourites->{
-                    Toast.makeText(this,"Favourites selected",Toast.LENGTH_LONG).show()
+
+                    supportFragmentManager.beginTransaction().replace(R.id.frameLayout,FavouriteFragment()).commit()
+                    supportActionBar?.title = "Favourites"
+                    drawerLayout.closeDrawers()
                 }
+
                 R.id.profile->{
-                    Toast.makeText(this,"Profile selected",Toast.LENGTH_LONG).show()
+                    supportFragmentManager.beginTransaction().replace(R.id.frameLayout,ProfileFragment()).commit()
+                    supportActionBar?.title = "Profile"
+                    drawerLayout.closeDrawers()
                 }
                 R.id.about_app->{
-                    Toast.makeText(this,"About App selected",Toast.LENGTH_LONG).show()
-                }
+                    supportFragmentManager.beginTransaction().replace(R.id.frameLayout,AboutAppFragment()).commit()
+                    supportActionBar?.title = "About App"
+                    drawerLayout.closeDrawers()                }
             }
 
             return@setNavigationItemSelectedListener true
@@ -77,5 +98,33 @@ class MainActivity : AppCompatActivity() {
         }
 
         return super.onOptionsItemSelected(item)
+    }
+
+    fun openDashboard()
+    {
+        val transaction = supportFragmentManager.beginTransaction()
+        val fragment = DashboardFragment()
+
+        transaction.replace(R.id.frameLayout,fragment)
+        transaction.commit()
+
+        supportActionBar?.title = "Dashboard"
+        drawerLayout.closeDrawers()
+
+        navigationView.setCheckedItem(R.id.dashboard)
+
+    }
+
+    override fun onBackPressed() {
+
+        val frag = supportFragmentManager.findFragmentById(R.id.frameLayout)
+
+        when(frag)
+        {
+            !is DashboardFragment -> openDashboard()
+
+            else -> super.onBackPressed()
+        }
+
     }
 }
