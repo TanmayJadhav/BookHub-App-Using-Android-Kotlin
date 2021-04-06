@@ -5,19 +5,12 @@
     android:layout_height="match_parent"
     tools:context=".fragment.DashboardFragment">
 
-    <TextView
-        android:id="@+id/dashboard_fragment"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/dashboard_fragment"
-        android:textSize="20sp"
-        android:layout_margin="10dp"/>
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerDashboard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/dashboard_fragment"
         android:padding="10dp"
         android:layout_margin="5dp"/>
 

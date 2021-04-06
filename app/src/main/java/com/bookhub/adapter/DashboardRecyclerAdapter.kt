@@ -1,6 +1,8 @@
 package com.bookhub.adapter
 
 import android.content.Context
+import android.content.Intent
+import android.text.TextUtils.replace
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,8 +10,12 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.content.ContextCompat.startActivity
+import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bookhub.R
+import com.bookhub.activity.DescriptionActivity
+import com.bookhub.fragment.FavouriteFragment
 import com.bookhub.model.Book
 
 class DashboardRecyclerAdapter(val context: Context ,val itemList:ArrayList<Book>) : RecyclerView.Adapter<DashboardRecyclerAdapter.DashboardViewHolder>() {
@@ -22,6 +28,8 @@ class DashboardRecyclerAdapter(val context: Context ,val itemList:ArrayList<Book
         val bookPrice : TextView = view.findViewById(R.id.book_price)
         val bookImage : ImageView = view.findViewById(R.id.book_image)
         val book_click_listner : ConstraintLayout = view.findViewById(R.id.book_click)
+
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DashboardViewHolder {
@@ -38,10 +46,24 @@ class DashboardRecyclerAdapter(val context: Context ,val itemList:ArrayList<Book
         holder.bookPrice.text = book.bookCost
         holder.bookRating.text = book.bookRating
         holder.bookImage.setBackgroundResource(book.bookImage)
+        var bookDescription = book.bookDescription
 
         holder.book_click_listner.setOnClickListener{
-            Toast.makeText(context,"Clicked on ${holder.bookName.text}",Toast.LENGTH_LONG).show()
+//            Toast.makeText(context,"Clicked on ${bookDescription}",Toast.LENGTH_LONG).show()
+
+//            transition.FragmentManager.beginTransaction().replace(R.id.frameLayout, FavouriteFragment()).commit()
+                val intent = Intent(context,DescriptionActivity::class.java)
+                intent.putExtra("bookName",book.bookName)
+                intent.putExtra("bookAuthor",book.bookAuthor)
+                intent.putExtra("bookPrice",book.bookCost.toString())
+                intent.putExtra("bookImage",book.bookImage)
+                intent.putExtra("bookRating",book.bookRating)
+                intent.putExtra("bookDesc",book.bookDescription)
+
+
+            context.startActivity(intent)
         }
+
 
     }
 
