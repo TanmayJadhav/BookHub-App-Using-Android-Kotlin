@@ -62,12 +62,12 @@ class MainActivity : AppCompatActivity() {
                     openDashboard()
                 }
 
-                R.id.favourites ->{
-
-                    supportFragmentManager.beginTransaction().replace(R.id.frameLayout, FavouriteFragment()).commit()
-                    supportActionBar?.title = "Favourites"
-                    drawerLayout.closeDrawers()
-                }
+//                R.id.favourites ->{
+//
+//                    supportFragmentManager.beginTransaction().replace(R.id.frameLayout, FavouriteFragment()).commit()
+//                    supportActionBar?.title = "Favourites"
+//                    drawerLayout.closeDrawers()
+//                }
 
                 R.id.profile ->{
                     supportFragmentManager.beginTransaction().replace(R.id.frameLayout, ProfileFragment()).commit()

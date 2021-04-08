@@ -1,5 +1,6 @@
 package com.bookhub.activity
 
+import android.content.Context
 import android.content.Intent
 import android.media.Image
 import androidx.appcompat.app.AppCompatActivity
@@ -11,6 +12,7 @@ import android.widget.Toast
 import androidx.appcompat.app.ActionBar
 import com.bookhub.R
 import com.bookhub.adapter.DashboardRecyclerAdapter
+import com.bookhub.fragment.DashboardFragment
 
 class DescriptionActivity : AppCompatActivity() {
 
@@ -24,11 +26,13 @@ class DescriptionActivity : AppCompatActivity() {
     lateinit var txtBookDesc : TextView
 
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_description)
 
+        var backButton: ImageView = findViewById(R.id.back_button)
         val receivedbookName: String? = intent.getStringExtra("bookName")
         val receivedbookAuthor: String? = intent.getStringExtra("bookAuthor")
         val receivedbookPrice: String? = intent.getStringExtra("bookPrice")
@@ -63,13 +67,13 @@ class DescriptionActivity : AppCompatActivity() {
         if (receivedbookName =="War and Peace")
         { txtBookImage.setBackgroundResource(R.drawable.war_and_peace)}
 
-        if (receivedbookName =="Madam Bovary")
+        if (receivedbookName =="Madame Bovary")
         { txtBookImage.setBackgroundResource(R.drawable.madam_bovary)}
 
         if (receivedbookName =="P.S I Love You")
         { txtBookImage.setBackgroundResource(R.drawable.ps_i_love_you)}
 
-        if (receivedbookName =="The Gray Gatsby")
+        if (receivedbookName =="The Great Gatsby")
         { txtBookImage.setBackgroundResource(R.drawable.the_gray_gatsby)}
 
         if (receivedbookName =="Anna Karenina")
@@ -77,7 +81,12 @@ class DescriptionActivity : AppCompatActivity() {
 
 
 
+        backButton.setOnClickListener {
 
+            val intent  = Intent(this,MainActivity::class.java)
+            startActivity(intent)
+
+        }
 
 
 

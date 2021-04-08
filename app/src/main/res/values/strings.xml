@@ -3,7 +3,7 @@
     <string name="dashboard">Dashboard</string>
     <string name="favourites">Favourite</string>
     <string name="profile">Profile</string>
-    <string name="about_app">About App</string>
+
     <string name="navigation_drawer_text">BookHub</string>
     <string name="open_drawer">Open Drawer</string>
     <string name="close_drawer">Close Drawer</string>
@@ -14,9 +14,11 @@
     <string name="about_app_fragment">About App Fragment</string>
     <string name="favourite_fragment">Favourite Fragment</string>
     <string name="title_activity_demo">DemoActivity</string>
+    <string name="about_app">This App is made by </string>
     <!--
     This string is used for square devices and overridden by hello_world in
     values-round/strings.xml for round devices.
     -->
     <string name="hello_world">Hello Square World!</string>
+
 </resources>
