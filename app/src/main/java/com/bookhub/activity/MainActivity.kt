@@ -2,8 +2,10 @@ package com.bookhub.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.method.ScrollingMovementMethod
 import android.view.MenuItem
 import android.widget.FrameLayout
+import android.widget.TextView
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.drawerlayout.widget.DrawerLayout
@@ -77,6 +79,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.about_app ->{
                     supportFragmentManager.beginTransaction().replace(R.id.frameLayout, AboutAppFragment()).commit()
                     supportActionBar?.title = "About App"
+
                     drawerLayout.closeDrawers()                }
             }
 

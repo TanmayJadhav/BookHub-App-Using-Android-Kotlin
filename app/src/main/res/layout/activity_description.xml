@@ -19,19 +19,21 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/primary"
-        android:minHeight="?attr/actionBarSize">
+        android:minHeight="?attr/actionBarSize"
+        tools:ignore="MissingClass">
 
         <ImageView
             android:id="@+id/back_button"
             android:layout_width="35dp"
             android:layout_height="30dp"
             android:layout_marginRight="10dp"
-            android:src="@drawable/back_arrow"/>
+            android:src="@drawable/back_arrow"
+            tools:ignore="MissingClass" />
 
         <TextView
             android:layout_height="match_parent"
             android:layout_width="wrap_content"
-            android:text="Book Description"
+            android:text=""
             android:textSize="20sp"
             android:textColor="@color/black"
             android:textStyle="bold"/>
@@ -61,6 +63,7 @@
                 <ImageView
                     android:id="@+id/txtBookImage"
                     android:layout_height="match_parent"
+                    android:layout_margin="10dp"
                     android:layout_width="0dp"
                     tools:ignore="Suspicious0dp"
                     android:layout_weight="1.5"

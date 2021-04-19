@@ -7,6 +7,7 @@
     android:background="@color/white"
     tools:context=".fragment.AboutAppFragment">
 
+
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/AppIcon"
         android:layout_width="130dp"
@@ -20,21 +21,35 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="305dp"
-        android:layout_height="299dp"
-        android:text="@string/about_app"
-        android:textSize="25sp"
-        android:textStyle="italic"
-        android:textColor="@color/black"
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="400dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/AppIcon"
-        app:layout_constraintHorizontal_bias="0.426"
-        app:layout_constraintStart_toStartOf="@+id/AppIcon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/AppIcon"
-        app:layout_constraintVertical_bias="0.231"
-        />
+        app:layout_constraintVertical_bias="0.174"
+        tools:ignore="MissingConstraints">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="305dp"
+            android:layout_height="299dp"
+            android:text="@string/about_app"
+            android:textColor="@color/black"
+            android:textSize="25sp"
+            android:textStyle="italic"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/AppIcon"
+            app:layout_constraintHorizontal_bias="0.426"
+            app:layout_constraintStart_toStartOf="@+id/AppIcon"
+            app:layout_constraintTop_toBottomOf="@+id/AppIcon"
+            app:layout_constraintVertical_bias="0.231"
+
+            />
+
+    </ScrollView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
