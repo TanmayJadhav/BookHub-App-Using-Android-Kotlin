@@ -153,6 +153,17 @@
                     android:layout_margin="10dp"/>
 
 
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/buyBookBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@id/txtBookDesc"
+                    android:text="Buy Book"
+
+                    android:background="@color/primary"/>
+
+
+
 
             </RelativeLayout>
 
@@ -160,11 +171,6 @@
 
 
     </ScrollView>
-
-
-
-
-
 
 
 </RelativeLayout>

@@ -3,6 +3,7 @@ package com.bookhub.activity
 import android.content.Context
 import android.content.Intent
 import android.media.Image
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -24,6 +25,7 @@ class DescriptionActivity : AppCompatActivity() {
     lateinit var txtBookRating : TextView
     lateinit var txtBookImage : ImageView
     lateinit var txtBookDesc : TextView
+    lateinit var buyButton : Button
 
 
 
@@ -38,6 +40,7 @@ class DescriptionActivity : AppCompatActivity() {
         val receivedbookPrice: String? = intent.getStringExtra("bookPrice")
         val receivedbookRating: String? = intent.getStringExtra("bookRating")
         val receivedbookDesc: String? = intent.getStringExtra("bookDesc")
+        val receivedbookUrl: String? = intent.getStringExtra("bookUrl")
 
 
         txtBookName = findViewById(R.id.txtBookName)
@@ -46,6 +49,7 @@ class DescriptionActivity : AppCompatActivity() {
         txtBookRating = findViewById(R.id.txtBookRating)
         txtBookImage  =  findViewById(R.id.txtBookImage)
         txtBookDesc = findViewById(R.id.txtBookDesc)
+        buyButton = findViewById(R.id.buyBookBtn)
 
 
 
@@ -56,6 +60,12 @@ class DescriptionActivity : AppCompatActivity() {
         txtBookPrice.text = receivedbookPrice.toString()
         txtBookRating.text = receivedbookRating
         txtBookDesc.text = receivedbookDesc
+
+        buyButton.setOnClickListener {
+            val openURL = Intent(android.content.Intent.ACTION_VIEW)
+            openURL.data = Uri.parse(receivedbookUrl)
+            startActivity(openURL)
+        }
 
 
         if (receivedbookName =="Lord of the Rings")

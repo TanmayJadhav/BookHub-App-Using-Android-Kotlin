@@ -6,6 +6,7 @@ import android.text.TextUtils.replace
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
@@ -30,6 +31,7 @@ class DashboardRecyclerAdapter(val context: Context ,val itemList:ArrayList<Book
         val book_click_listner : ConstraintLayout = view.findViewById(R.id.book_click)
 
 
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DashboardViewHolder {
@@ -46,7 +48,7 @@ class DashboardRecyclerAdapter(val context: Context ,val itemList:ArrayList<Book
         holder.bookPrice.text = book.bookCost
         holder.bookRating.text = book.bookRating
         holder.bookImage.setBackgroundResource(book.bookImage)
-        var bookDescription = book.bookDescription
+//        var bookDescription = book.bookDescription
 
         holder.book_click_listner.setOnClickListener{
 //            Toast.makeText(context,"Clicked on ${bookDescription}",Toast.LENGTH_LONG).show()
@@ -59,7 +61,7 @@ class DashboardRecyclerAdapter(val context: Context ,val itemList:ArrayList<Book
                 intent.putExtra("bookImage",book.bookImage)
                 intent.putExtra("bookRating",book.bookRating)
                 intent.putExtra("bookDesc",book.bookDescription)
-
+                intent.putExtra("bookUrl",book.url)
 
             context.startActivity(intent)
         }

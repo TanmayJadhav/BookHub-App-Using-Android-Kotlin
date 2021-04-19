@@ -7,5 +7,6 @@ package com.bookhub.model
      val bookCost : String ,
      val bookRating : String ,
      val bookImage : Int ,
-     val bookDescription : String
+     val bookDescription : String,
+     val url : String
  )
